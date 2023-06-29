@@ -1,0 +1,6 @@
+html/** linguist-documentation=false
+css/** linguist-documentation=false
+templates/** linguist-documentation=false
+html/** linguist-vendored=false
+css/** linguist-vendored=false
+templates/** linguist-vendored=false
