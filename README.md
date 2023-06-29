@@ -1,4 +1,5 @@
-# mol-renderer
+# PDB Viewer for Research
+
 Performs blast search and merge with PDB files, rendering web pages, etc
 
 
@@ -7,7 +8,7 @@ Create a list of all known protein-peptide complexes. Use the REST API to examin
  
  
  2. BLAST search with local DB
- Create a BLAST database from protein and peptide pdb files in ~/web_flask/data/PepBind/protein and ~/web_flask/data/PepBind/peptide directories, respectively, and perform BLAST search by installing BLAST, generating local DB, and converting pdb files to fasta format using pdb_tools, and display sequence list and file names (PDBIDs) in the BLAST search results.
+ Create a BLAST database from protein and peptide pdb files in protein and peptide directories, respectively, and perform BLAST search by installing BLAST, generating local DB, and converting pdb files to fasta format using pdb_tools, and display sequence list and file names (PDBIDs) in the BLAST search results.
  
  3. PDB_MERGE
 Merge protein and peptide PDB files based on PDBID and chain information from Pepbind_list file, and store the resulting complex PDB files in the "complex" directory for later use in training. PDB merge from pdb_tools will be used for merging.
