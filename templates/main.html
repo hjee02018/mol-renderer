@@ -4,7 +4,31 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>BLAST Search</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("button").click(function () {
+          var sequence = $("#sequenceID").val();
+          $.ajax({
+            type: "POST",
+            url: "/static/blast.php", // 수정이 필요한 부분
+            data: { sequence: sequence },
+            success: function (response) {
+              $("#result").html(response);
+            },
+            error: function (xhr, status, error) {
+              console.log(xhr.responseText);
+            },
+          });
+        });
+      });
+    </script>
   </head>
-  <body></body>
+  <body>
+    <label for="sequenceID">Sequence</label>
+    <input type="text" name="sequence" id="sequenceID" />
+    <button title="Input for blast search.">Search</button>
+    <div id="result"></div>
+  </body>
 </html>
