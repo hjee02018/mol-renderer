@@ -16,9 +16,11 @@ def blast_search():
 def run_blast_search(sequence):
     with open('query.fasta', 'w') as file:
         file.write(f'>query\n{sequence}')
-    subprocess.run(['blastp', '-query', 'query.fasta', '-db', 'prot_db', '-out', 'result.txt'])
+    subprocess.run(['blastp', '-query', 'query.fasta', '-db', 'blast_db', '-out', 'result.txt'])
     with open('result.txt', 'r') as file:
-        result = file.read()
+        lines = file.readlines()
+        result = ''.join(lines[22:])
+#        result = file.read()
     return result
 
 if __name__ == '__main__':
