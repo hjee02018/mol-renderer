@@ -14,4 +14,7 @@ Create a list of all known protein-peptide complexes. Use the REST API to examin
 Merge protein and peptide PDB files based on PDBID and chain information from Pepbind_list file, and store the resulting complex PDB files in the "complex" directory for later use in training. PDB merge from pdb_tools will be used for merging.
 
  4. 3Dmol-renderer
- Create a web page using Node.js and 3Dmol.js to visualize each complex 
+ Create a web page using Node.js and 3Dmol.js to visualize each complex
+
+ 5. Blast Search
+ Create Local Database and do Blast Search using blast.py  
