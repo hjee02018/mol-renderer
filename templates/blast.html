@@ -12,7 +12,8 @@
   <form action="/" method="post">
     <label for="sequenceID">Sequence</label>
     <!-- input field -->
-    <input type="text" name="sequence" id="sequenceID" />
+    <input type="text" name="sequence" id="sequenceID"
+      value="{{ request.form.sequence if request.form.sequence else '' }}" />
     <button type="submit">Search</button>
   </form>
 
@@ -27,6 +28,7 @@
         <th>Sequence</th>
         <th>Score(Bits)</th>
         <th>E Value</th>
+        <th>complex</th>
       </tr>
     </thead>
     <tbody>
@@ -36,6 +38,7 @@
         {% for column in columns %}
         <td>{{ column }}</td>
         {% endfor %}
+        <td><a href="/{{columns[0]}}">complex링크</a></td>
       </tr>
       {% endfor %}
     </tbody>

@@ -1,7 +1,14 @@
 import subprocess
-from flask import Flask, render_template, request
+from flask import Flask, render_template, url_for, request
 
 app = Flask(__name__)
+
+@app.route('/<sequence>')
+def viewer1(sequence):
+    pdb_id = sequence.replace('|', '.')
+    pdb_filename = f'{pdb_id.upper()}.pdb'
+    pdb_url = url_for('static', filename='pdbs/' + pdb_filename)
+    return render_template('complex.html', data_href=pdb_url)
 
 @app.route('/', methods=['GET', 'POST'])
 def blast_search():
@@ -32,6 +39,8 @@ def run_blast_search(sequence):
             'table_lines': table_lines,
             'remaining_lines': remaining_lines
         }
+
+#        result = file.read()
     return result
 
 if __name__ == '__main__':
