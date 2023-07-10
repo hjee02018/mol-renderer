@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blast Search</title>
+</head>
+
+<body>
+  <form action="/" method="post">
+    <label for="sequenceID">Sequence</label>
+    <!-- input field -->
+    <input type="text" name="sequence" id="sequenceID" />
+    <button type="submit">Search</button>
+  </form>
+
+  <!-- 서버 응답 : blast_results -->
+  {% if blast_results %}
+  <h2>Blast Search Results</h2>
+  {% if blast_results.table_lines %}
+  <h3>Blast Search</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Sequence</th>
+        <th>Score(Bits)</th>
+        <th>E Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for line in blast_results.table_lines %}
+      <tr>
+        {% set columns = line.split() %}
+        {% for column in columns %}
+        <td>{{ column }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+  {% if blast_results.remaining_lines %}
+  <h3>Remaining Infos</h3>
+  <pre>{{ '\n'.join(blast_results.remaining_lines) }}</pre>
+  {% endif %}
+  {% endif %}
+</body>
+
+</html>

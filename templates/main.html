@@ -1,23 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blast Search</title>
-  </head>
-  <body>
-    <form action="/" method="post">
-      <label for="sequenceID">Sequence</label>
-      <!-- input field -->
-      <input type="text" name="sequence" id="sequenceID" />
-      <button type="submit">Search</button>
-    </form>
+<html lang="ko">
 
-    <!-- 서버 응답 : blast_results -->
-    {% if blast_results %}
-    <h2>Blast Search Results</h2>
-    <pre>{{ blast_results }}</pre>
-    {% endif %}
-  </body>
+<head>
+  <Deta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blast Search</title>
+</head>
+
+<body>
+  <!-- {% comment %} input attribute {% endcomment %} -->
+  <div>
+    <input type="text" name="" id="" value="123">
+    <input type="text" name="" id="" value="123" readonly>
+    <input type="text" name="" id="" value="123" disabled>
+    <input type="text" name="" id="" value="123" maxlength="5">
+    <input type="text" name="" id="" value="123" placeholder="영문소문자만 입력하시오">
+  </div>
+  <div>
+    <form action="">
+      <label for="userid">아이디</label>
+      <input type="text" name="" id="userid" required>
+      <button type="submit">저장</button>
+    </form>
+  </div>
+  <div>
+    <input type="text" name="email" id="emailid" autocomplete="on">
+    <input type="text" name="phone" id="phoneid" autocomplete="on">
+  </div>
+
+  <!-- {% comment %} form 요소 {% endcomment %} -->
+  <!-- {% comment %} 사용자로 부터 데이터(쩡보)를 입력받기 위한 html요소 {% endcomment %} -->
+  <form action="/" method="post">
+    <label for="sequenceID">Sequence</label>
+    <!-- input field -->
+    <input type="text" name="sequence" id="sequenceID" />
+    <button type="submit">Search</button>
+  </form>
+
+  <!-- 서버 응답 : blast_results -->
+  {% if blast_results %}
+  <h2>Blast Search Results</h2>
+  <pre>{{ blast_results }}</pre>
+  {% endif %}
+</body>
+
 </html>

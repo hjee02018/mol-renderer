@@ -19,8 +19,19 @@ def run_blast_search(sequence):
     subprocess.run(['blastp', '-query', 'query.fasta', '-db', 'blast_db', '-out', 'result.txt'])
     with open('result.txt', 'r') as file:
         lines = file.readlines()
-        result = ''.join(lines[22:])
-#        result = file.read()
+        result = ''.join(lines[27:])
+        start_line = 29
+        end_line = start_line
+        for i, line in enumerate(lines[start_line:], start=start_line):
+            if line.strip() == "":
+                end_line = i
+                break
+        table_lines = lines[start_line:end_line]
+        remaining_lines = lines[end_line:]
+        result = {
+            'table_lines': table_lines,
+            'remaining_lines': remaining_lines
+        }
     return result
 
 if __name__ == '__main__':
